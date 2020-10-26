@@ -1,7 +1,27 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `Kent Vincent Photo`,
     description: `Showing the best of Kent Vincent's amateur photography`,
   },
-  plugins: [],
+  plugins: [
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
+      },
+    },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-emotion`,
+  ],
 }
