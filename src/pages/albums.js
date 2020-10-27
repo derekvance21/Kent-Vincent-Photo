@@ -40,13 +40,12 @@ const AlbumTeaser = ({ title, date, caption }) => {
 
 const AlbumItemContainer = styled(Link)`
   width: 100%;
-  padding-bottom: 1em;
 `
 
 const AlbumItem = props => {
   const { title, date, src, aspectRatio, caption } = props
   return (
-    <AlbumItemContainer className="Item" to={`/albums/${kebabCase(title)}`}>
+    <AlbumItemContainer className="Card" to={`/albums/${kebabCase(title)}`}>
       <AlbumThumbnail src={src} aspectRatio={aspectRatio}>
         <AlbumTeaser title={title} date={date} caption={caption} />
       </AlbumThumbnail>

@@ -6,11 +6,11 @@ const PhotoItemContainer = styled.div`
 `
 
 const Photo = styled.div`
-  padding-top: ${props => 50 / props.aspectRatio}%;
-  padding-bottom: ${props => 50 / props.aspectRatio}%;
+  padding-top: ${props => 100 / props.aspectRatio}%;
   background-image: url(${props => props.src});
   position: relative;
   background-size: cover;
+  cursor: pointer;
 `
 
 const PhotoInfoContainer = styled.div`
@@ -62,6 +62,10 @@ const BuyButton = styled.button`
   }
 `
 
+const BuyButtonIcon = styled.span`
+  margin-right: 0.5em;
+`
+
 const PhotoInfo = ({ title, description, createdAt }) => {
   const [detailsToggled, setDetailsToggled] = useState(false)
   const handleDetailsToggle = () => setDetailsToggled(prevValue => !prevValue)
@@ -75,7 +79,12 @@ const PhotoInfo = ({ title, description, createdAt }) => {
       {detailsToggled && (
         <PhotoDetails title={title} description={description} />
       )}
-      <BuyButton>Buy this photo</BuyButton>
+      <BuyButton>
+        <BuyButtonIcon>
+          <i class="fas fa-shopping-cart"></i>
+        </BuyButtonIcon>
+        Buy this photo
+      </BuyButton>
     </PhotoInfoContainer>
   )
 }
@@ -93,7 +102,7 @@ export default function PhotoItem({ node, children }) {
   const handleExpandToggle = () => setExpandToggled(prevValue => !prevValue)
 
   return (
-    <PhotoItemContainer className="Item">
+    <PhotoItemContainer className="Card">
       <Photo onClick={handleExpandToggle} aspectRatio={aspectRatio} src={src}>
         {children}
       </Photo>

@@ -10,7 +10,8 @@ const Nav = styled.nav`
   z-index: 100;
   top: 0px;
   padding: 0.2rem;
-  width: 100%;
+  width: calc(100% - 0.4rem);
+  max-width: calc(1080px - 0.4rem);
   background-color: rgba(0, 0, 0, 0.8);
 `
 

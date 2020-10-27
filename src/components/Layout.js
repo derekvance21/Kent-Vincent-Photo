@@ -7,6 +7,7 @@ import styled from "@emotion/styled"
 import "../styles.scss"
 
 const Content = styled.div`
+  margin: 0 auto;
   max-width: 1080px;
 `
 
@@ -23,8 +24,10 @@ export default function Layout({ children }) {
           crossorigin="anonymous"
         ></script>
       </Helmet>
-      <Navbar />
-      <Content>{children}</Content>
+      <Content>
+        <Navbar />
+        {children}
+      </Content>
       <Footer />
     </div>
   )
