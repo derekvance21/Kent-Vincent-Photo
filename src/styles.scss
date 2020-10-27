@@ -20,6 +20,17 @@ p,
 button {
   font-family: "Raleway", sans-serif;
 }
+
+.Item {
+  background: rgb(22, 22, 22);
+  background: linear-gradient(
+    0deg,
+    rgba(22, 22, 22, 1) 0%,
+    rgba(38, 38, 38, 1) 29%,
+    rgba(65, 65, 65, 1) 100%
+  );
+}
+
 #App {
   margin: 0 auto;
 }

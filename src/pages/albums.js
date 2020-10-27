@@ -1,11 +1,12 @@
 import React from "react"
-import { graphql } from "gatsby"
-import Layout from "./components/Layout"
+import { graphql, Link } from "gatsby"
+import Layout from "../components/Layout"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
+import { kebabCase } from "lodash"
 
 const AlbumThumbnail = styled.div`
-  background-image: url(https:${props => props.src});
+  background-image: url(${props => props.src});
   background-size: cover;
   padding-top: ${props => 100 / props.aspectRatio}%;
   position: relative;
@@ -37,16 +38,15 @@ const AlbumTeaser = ({ title, date, caption }) => {
   )
 }
 
-const AlbumItemContainer = styled.div`
+const AlbumItemContainer = styled(Link)`
   width: 100%;
   padding-bottom: 1em;
-  background-color: rgba(0, 0, 0, 0.9);
 `
 
 const AlbumItem = props => {
   const { title, date, src, aspectRatio, caption } = props
   return (
-    <AlbumItemContainer>
+    <AlbumItemContainer className="Item" to={`/albums/${kebabCase(title)}`}>
       <AlbumThumbnail src={src} aspectRatio={aspectRatio}>
         <AlbumTeaser title={title} date={date} caption={caption} />
       </AlbumThumbnail>
@@ -113,3 +113,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export { AlbumTeaserContainer, AlbumThumbnail, AlbumItemContainer }

@@ -3,7 +3,12 @@ import { Helmet } from "react-helmet"
 import GetSiteMetadata from "./siteMetadata"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
+import styled from "@emotion/styled"
 import "../styles.scss"
+
+const Content = styled.div`
+  max-width: 1080px;
+`
 
 export default function Layout({ children }) {
   const { title, description } = GetSiteMetadata()
@@ -19,7 +24,7 @@ export default function Layout({ children }) {
         ></script>
       </Helmet>
       <Navbar />
-      {children}
+      <Content>{children}</Content>
       <Footer />
     </div>
   )

@@ -3,14 +3,13 @@ import styled from "@emotion/styled"
 
 const PhotoItemContainer = styled.div`
   padding-bottom: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.9);
 `
 
 const Photo = styled.div`
   padding-top: ${props => 50 / props.aspectRatio}%;
   padding-bottom: ${props => 50 / props.aspectRatio}%;
   background-image: url(${props => props.src});
-  background-repeat: no-repeat;
+  position: relative;
   background-size: cover;
 `
 
@@ -81,7 +80,7 @@ const PhotoInfo = ({ title, description, createdAt }) => {
   )
 }
 
-export default function PhotoItem({ node }) {
+export default function PhotoItem({ node, children }) {
   const {
     description,
     title,
@@ -94,12 +93,10 @@ export default function PhotoItem({ node }) {
   const handleExpandToggle = () => setExpandToggled(prevValue => !prevValue)
 
   return (
-    <PhotoItemContainer>
-      <Photo
-        onClick={handleExpandToggle}
-        aspectRatio={aspectRatio}
-        src={src}
-      ></Photo>
+    <PhotoItemContainer className="Item">
+      <Photo onClick={handleExpandToggle} aspectRatio={aspectRatio} src={src}>
+        {children}
+      </Photo>
       {expandToggled && (
         <PhotoInfo
           description={description}

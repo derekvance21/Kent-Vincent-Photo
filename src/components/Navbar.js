@@ -7,7 +7,7 @@ const iconSize = 1.5 // em
 
 const Nav = styled.nav`
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0px;
   padding: 0.2rem;
   width: 100%;
