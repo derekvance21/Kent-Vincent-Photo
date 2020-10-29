@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
-import { kebabCase } from "lodash"
+import BackgroundImage from "gatsby-background-image"
 
 const AlbumThumbnail = styled.div`
   background-image: url(${props => props.src});
@@ -14,12 +14,15 @@ const AlbumThumbnail = styled.div`
 `
 
 const AlbumTeaserContainer = styled.div`
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: --text-overlay-background;
   color: white;
-  padding: 0.75em 1em;
+  padding: 1.5em 1em;
   position: absolute;
   bottom: 0;
   width: calc(100% - 2em);
+  &:hover {
+    background-color: --text-overlay-background-hover;
+  }
 `
 
 const AlbumTeaserHeading = css`
@@ -28,7 +31,7 @@ const AlbumTeaserHeading = css`
 
 const AlbumTeaser = ({ title, date, caption }) => {
   return (
-    <AlbumTeaserContainer>
+    <AlbumTeaserContainer className="text-overlay">
       <h2 css={AlbumTeaserHeading}>{title}</h2>
       <h2 style={{ margin: "0 0.3em" }} css={AlbumTeaserHeading}>
         |
@@ -38,25 +41,25 @@ const AlbumTeaser = ({ title, date, caption }) => {
   )
 }
 
-const AlbumItemContainer = styled(Link)`
-  width: 100%;
-`
-
-const AlbumItem = props => {
-  const { title, date, src, aspectRatio, caption } = props
+const AlbumItem = ({ id, title, date, fluid, caption }) => {
   return (
-    <AlbumItemContainer className="Card" to={`/albums/${kebabCase(title)}`}>
-      <AlbumThumbnail src={src} aspectRatio={aspectRatio}>
+    <Link className="Card" to={`/albums/${id}`}>
+      <BackgroundImage
+        fluid={fluid}
+        backgroundColor={`#040e18`}
+        Tag="section"
+        css={css`
+          height: min(100vh, calc(100vw / ${fluid.aspectRatio}));
+        `}
+      >
         <AlbumTeaser title={title} date={date} caption={caption} />
-      </AlbumThumbnail>
-    </AlbumItemContainer>
+      </BackgroundImage>
+    </Link>
   )
 }
 
 export default function Albums({ data }) {
-  const {
-    allContentfulAlbum: { edges },
-  } = data
+  const edges = data.allContentfulAlbum.edges
 
   return (
     <Layout>
@@ -66,21 +69,17 @@ export default function Albums({ data }) {
             id,
             title,
             date,
-            thumbnail: {
-              fixed: { src, aspectRatio },
-              description,
-            },
+            thumbnail: { fluid },
             caption: { caption },
           },
         } = edge
         return (
           <AlbumItem
             key={id}
+            id={id}
             title={title}
             date={date}
-            src={src}
-            aspectRatio={aspectRatio}
-            description={description}
+            fluid={fluid}
             caption={caption}
           />
         )
@@ -98,11 +97,9 @@ export const pageQuery = graphql`
           title
           date(formatString: "MMMM, YYYY")
           thumbnail {
-            fixed(width: 800) {
-              src
-              aspectRatio
+            fluid(maxWidth: 1400) {
+              ...GatsbyContentfulFluid
             }
-            description
           }
           caption {
             caption
@@ -112,5 +109,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-export { AlbumTeaserContainer, AlbumThumbnail, AlbumItemContainer }

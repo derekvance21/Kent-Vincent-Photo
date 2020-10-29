@@ -1,4 +1,3 @@
-const { kebabCase } = require("lodash")
 const path = require("path")
 
 exports.createPages = ({ actions, graphql }) => {
@@ -23,9 +22,8 @@ exports.createPages = ({ actions, graphql }) => {
     }
     const albums = result.data.allContentfulAlbum.edges
     albums.forEach(({ node }) => {
-      console.log(node)
       createPage({
-        path: `/albums/${kebabCase(node.title)}`,
+        path: `/albums/${node.id}`,
         component: AlbumTemplate,
         context: {
           id: node.id,

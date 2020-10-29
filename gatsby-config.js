@@ -3,7 +3,7 @@ require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `Kent Vincent Photo`,
-    description: `Showing the best of Kent Vincent's amateur photography`,
+    description: `Showing the best of Kent Vincent's photography`,
   },
   plugins: [
     {
@@ -23,5 +23,8 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-emotion`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `@contentful/gatsby-transformer-contentful-richtext`,
   ],
 }

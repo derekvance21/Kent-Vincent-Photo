@@ -8,7 +8,7 @@ import "../styles.scss"
 
 const Content = styled.div`
   margin: 0 auto;
-  max-width: 1080px;
+  max-width: var(--content-max-width);
 `
 
 export default function Layout({ children }) {
@@ -27,8 +27,8 @@ export default function Layout({ children }) {
       <Content>
         <Navbar />
         {children}
+        <Footer />
       </Content>
-      <Footer />
     </div>
   )
 }

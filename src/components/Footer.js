@@ -2,7 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 
 const FooterContainer = styled.footer`
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--secondary-background);
   padding: 1rem;
 `
 

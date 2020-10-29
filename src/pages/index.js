@@ -1,24 +1,18 @@
 import React from "react"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
-import styled from "@emotion/styled"
-import PhotoItem from "../components/PhotoItem"
-
-const HeaderTitle = styled.h1`
-  position: relative;
-  text-align: center;
-  font-size: 3rem;
-  color: white;
-  top: calc(50% - 1em);
-`
+import PhotoCard from "../components/PhotoCard"
 
 export default function Home({ data }) {
+  const heroNode = data.contentfulHomePage.image
   const edges = data.allContentfulAsset.edges
   return (
     <Layout>
-      {edges.map((edge, index) => {
-        const node = edge.node
-        return <PhotoItem key={node.id} node={node}></PhotoItem>
+      <PhotoCard node={heroNode} />
+      {edges.map(({ node }) => {
+        return (
+          node.id !== heroNode.id && <PhotoCard key={node.id} node={node} />
+        )
       })}
     </Layout>
   )
@@ -32,11 +26,21 @@ export const pageQuery = graphql`
           id
           description
           title
-          createdAt(formatString: "MMMM Do, YYYY")
-          fixed {
-            src
-            aspectRatio
+          createdAt(formatString: "MMMM D, YYYY")
+          fluid(maxWidth: 1400) {
+            ...GatsbyContentfulFluid
           }
+        }
+      }
+    }
+    contentfulHomePage {
+      image {
+        id
+        description
+        title
+        createdAt(formatString: "MMMM D, YYYY")
+        fluid(maxWidth: 1400) {
+          ...GatsbyContentfulFluid
         }
       }
     }
