@@ -3,18 +3,12 @@ import { Helmet } from "react-helmet"
 import GetSiteMetadata from "./siteMetadata"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
-import styled from "@emotion/styled"
-import "../styles.scss"
-
-const Content = styled.div`
-  margin: 0 auto;
-  max-width: var(--content-max-width);
-`
+import "../sass/main.scss"
 
 export default function Layout({ children }) {
   const { title, description } = GetSiteMetadata()
   return (
-    <div id="App">
+    <div id="app">
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -24,11 +18,11 @@ export default function Layout({ children }) {
           crossorigin="anonymous"
         ></script>
       </Helmet>
-      <Content>
+      <div className="content">
         <Navbar />
         {children}
         <Footer />
-      </Content>
+      </div>
     </div>
   )
 }

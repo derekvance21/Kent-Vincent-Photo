@@ -1,0 +1,45 @@
+.navbar {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  max-width: $content-max-width;
+
+  &--opened {
+    background-color: $text-overlay-background;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &--icon {
+      font-size: 4rem;
+      cursor: pointer;
+      color: $color-white;
+      transition: all 0.2s ease-out;
+      text-shadow: 0.1rem 0.2rem 0.5rem $color-black;
+    }
+  }
+
+  &__menu {
+    animation: slideUp 2s ease-out;
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 1rem;
+
+    &--item {
+      display: inline-block;
+      width: 50%;
+      padding: 0.5em 0.5em 0.5em 0;
+      border-bottom: solid white 1px;
+    }
+
+    &--link {
+      color: $color-white;
+      font-size: 4rem;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.footer {
+  background-color: $secondary-background;
+  padding: 1rem;
+
+  &__text {  
+    text-align: center;
+    margin: 0;
+    color: white;
+  }
+}

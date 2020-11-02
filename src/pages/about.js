@@ -17,7 +17,7 @@ export default function About({ data }) {
   }
   return (
     <Layout>
-      <AboutContainer className="text-container">
+      <AboutContainer className="text-header">
         <AboutHTML dangerouslySetInnerHTML={html}></AboutHTML>
       </AboutContainer>
     </Layout>

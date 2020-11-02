@@ -1,0 +1,18 @@
+.album-thumbnail__teaser {
+  color: white;
+  padding: 1.5rem 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  &--heading {
+    display: inline-block;
+    font-size: 4rem;
+    text-shadow: 0.1rem 0.2rem 0.5rem $color-black;
+    &:not(:last-child) {
+      margin-right: 0.8rem;
+    }
+    &:not(:first-child) {
+      font-size: 3rem;
+    }
+  }
+}

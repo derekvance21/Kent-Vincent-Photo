@@ -1,29 +1,8 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
-import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 import BackgroundImage from "gatsby-background-image"
-
-const AlbumThumbnail = styled.div`
-  background-image: url(${props => props.src});
-  background-size: cover;
-  padding-top: ${props => 100 / props.aspectRatio}%;
-  position: relative;
-  width: 100%;
-`
-
-const AlbumTeaserContainer = styled.div`
-  background-color: --text-overlay-background;
-  color: white;
-  padding: 1.5em 1em;
-  position: absolute;
-  bottom: 0;
-  width: calc(100% - 2em);
-  &:hover {
-    background-color: --text-overlay-background-hover;
-  }
-`
 
 const AlbumTeaserHeading = css`
   display: inline-block;
@@ -31,13 +10,13 @@ const AlbumTeaserHeading = css`
 
 const AlbumTeaser = ({ title, date, caption }) => {
   return (
-    <AlbumTeaserContainer className="text-overlay">
-      <h2 css={AlbumTeaserHeading}>{title}</h2>
-      <h2 style={{ margin: "0 0.3em" }} css={AlbumTeaserHeading}>
+    <div className="album-thumbnail__teaser text-overlay">
+      <h2 className="album-thumbnail__teaser--heading">{title}</h2>
+      <h2 className="album-thumbnail__teaser--heading">
         |
       </h2>
-      <h4 css={AlbumTeaserHeading}>{date}</h4>
-    </AlbumTeaserContainer>
+      <h4 className="album-thumbnail__teaser--heading">{date}</h4>
+    </div>
   )
 }
 
