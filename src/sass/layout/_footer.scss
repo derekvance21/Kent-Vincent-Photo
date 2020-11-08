@@ -1,10 +1,51 @@
 .footer {
-  background-color: $secondary-background;
-  padding: 1rem;
+  background-image: linear-gradient(
+    to bottom,
+    $primary-background,
+    $secondary-background
+  );
+  text-align: left;
+  padding: 1rem 0;
 
-  &__text {  
-    text-align: center;
-    margin: 0;
-    color: white;
+  &-section {
+    padding: 1rem 2rem;
+    display: inline-block;
+    width: calc(min(50%, 30rem));
+    &__items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+  }
+
+  &__text {
+    color: $color-light-gray;
+    font-size: 1.2rem;
+
+    &--header {
+      font-weight: 600;
+      font-size: 1.6rem;
+      border-bottom: 1px solid $color-light-gray;
+      padding: 0.8rem;
+      text-shadow: 0 0.2rem 0.5rem $color-black;
+    }
+    &--link {
+      padding: 1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid transparent;
+
+      &:hover {
+        text-shadow: 0 0.5rem 0.5rem $color-black;
+        transform: translateY(-2px);
+        border-bottom: 1px solid $color-white;
+      }
+    }
+  }
+
+  &__bottom {
+    text-align: right;
+    margin: 0 2rem;
+    padding-bottom: 1rem;
   }
 }

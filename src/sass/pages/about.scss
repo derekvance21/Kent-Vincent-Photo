@@ -1,0 +1,11 @@
+.about {
+  & h1 {
+    font-weight: $header-font-weight;
+    color: $color-white;
+  }
+  & p {
+    font-size: 1.6rem;
+    color: $color-light-gray;
+    font-weight: $paragraph-font-weight;
+  }
+}

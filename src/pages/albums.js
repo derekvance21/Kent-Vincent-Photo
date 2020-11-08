@@ -4,18 +4,11 @@ import Layout from "../components/Layout"
 import { css } from "@emotion/core"
 import BackgroundImage from "gatsby-background-image"
 
-const AlbumTeaserHeading = css`
-  display: inline-block;
-`
-
-const AlbumTeaser = ({ title, date, caption }) => {
+const AlbumTeaser = ({ title, date }) => {
   return (
-    <div className="album-thumbnail__teaser text-overlay">
+    <div className="album-thumbnail__teaser">
       <h2 className="album-thumbnail__teaser--heading">{title}</h2>
-      <h2 className="album-thumbnail__teaser--heading">
-        |
-      </h2>
-      <h4 className="album-thumbnail__teaser--heading">{date}</h4>
+      <h3 className="album-thumbnail__teaser--subheading">{date}</h3>
     </div>
   )
 }
@@ -28,10 +21,10 @@ const AlbumItem = ({ id, title, date, fluid, caption }) => {
         backgroundColor={`#040e18`}
         Tag="section"
         css={css`
-          height: min(100vh, calc(100vw / ${fluid.aspectRatio}));
+          height: min(50vh, calc(100vw / ${fluid.aspectRatio}));
         `}
       >
-        <AlbumTeaser title={title} date={date} caption={caption} />
+        <AlbumTeaser title={title} date={date} />
       </BackgroundImage>
     </Link>
   )
@@ -45,7 +38,7 @@ export default function Albums({ data }) {
       {edges.map(edge => {
         const {
           node: {
-            id,
+            contentful_id,
             title,
             date,
             thumbnail: { fluid },
@@ -54,8 +47,8 @@ export default function Albums({ data }) {
         } = edge
         return (
           <AlbumItem
-            key={id}
-            id={id}
+            key={contentful_id}
+            id={contentful_id}
             title={title}
             date={date}
             fluid={fluid}
@@ -72,11 +65,11 @@ export const pageQuery = graphql`
     allContentfulAlbum {
       edges {
         node {
-          id
+          contentful_id
           title
           date(formatString: "MMMM, YYYY")
           thumbnail {
-            fluid(maxWidth: 1400) {
+            fluid(maxWidth: 2400) {
               ...GatsbyContentfulFluid
             }
           }

@@ -1,0 +1,63 @@
+.photo-viewer {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(#111, 0.96);
+
+  &__close {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__scroll {
+    color: $color-white;
+    position: absolute;
+    cursor: pointer;
+    z-index: 200;
+    font-size: 4rem;
+    text-shadow: 0 0.5rem 0.8rem rgba($color-black, 0.8);
+    padding: 50vh 2rem;
+    transition: all 0.2s ease;
+
+    &--left {
+      left: 0;
+      padding-right: 4rem;
+    }
+    &--right {
+      right: 0;
+      padding-left: 4rem;
+    }
+    &:hover {
+      transform: translateY(-2px);
+      color: #fff;
+      text-shadow: 0 0.6rem 1.2rem rgba($color-black, 0.8);
+    }
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+
+  &__icon {
+    color: $color-white;
+    font-size: 3rem;
+    z-index: 100000;
+
+    &--show {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 2rem;
+    }
+    &--hide {
+    }
+    &--close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 2rem;
+    }
+  }
+}

@@ -1,15 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import styled from "@emotion/styled"
-
-const AboutContainer = styled.div`
-  color: var(--text-color-solid);
-`
-
-const AboutHTML = styled.div`
-  line-height: 2;
-`
 
 export default function About({ data }) {
   const html = {
@@ -17,9 +8,9 @@ export default function About({ data }) {
   }
   return (
     <Layout>
-      <AboutContainer className="text-header">
-        <AboutHTML dangerouslySetInnerHTML={html}></AboutHTML>
-      </AboutContainer>
+      <div className="text-header about">
+        <div dangerouslySetInnerHTML={html}></div>
+      </div>
     </Layout>
   )
 }

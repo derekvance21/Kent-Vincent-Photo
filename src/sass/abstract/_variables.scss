@@ -1,16 +1,20 @@
 // Layout
-$content-max-width: 1400px;
 
 // Colors
 $primary-background: #111111;
 $secondary-background: #181818;
-$text-overlay-background: rgba(0, 0, 0, 0.8);
-$text-overlay-background-hover: rgba(0, 0, 0, 0.9);
+$text-overlay-background: rgba(0, 0, 0, 0.9);
+$text-overlay-background-hover: rgba(0, 0, 0, 0.4);
 $text-color-solid: #ccc;
 $color-white: #eee;
+$color-light-gray: #ccc;
 $color-black: #111;
 
 $box-shadow-overlay-transparency: 0.8;
+
+// Text
+$header-font-weight: 300;
+$paragraph-font-weight: 500;
 
 // Icons
 $icon-hover-background: #555;

@@ -1,35 +1,8 @@
 .photo-card {
   cursor: pointer;
-}
+  transition: all 0.2s ease;
 
-.info {
-  color: white;
-  padding: .75rem;
-  position: absolute;
-  bottom: 0;
-  box-sizing: border-box;
-  width: 100%;
-  backface-visibility: hidden;  
-  animation: slideUp 2s ease-out;
-
-  &__details {
-    animation: slideUp 2s ease-out;
-    padding: 0.6rem 0 1rem 0;
-    border-bottom: 1px solid $color-white;
-    &--text {
-      font-size: 1.5rem;
-      color: $text-color-solid;
-      padding: 0 0 0.5rem 0.5rem;
-    }
-  }
-
-  &__head {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 0.5rem;
-    &--title {
-      text-shadow: 0.1rem 0.2rem 1rem $color-black;
-      font-size: 3rem;
-    }
+  &:hover {
+    transform: scale(1.01);
   }
 }

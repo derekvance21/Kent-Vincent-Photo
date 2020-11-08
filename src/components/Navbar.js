@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import { css } from "@emotion/core"
 
-const MenuLink = ({to}) => (
+const MenuLink = ({ to }) => (
   <div className="navbar__menu--item">
     <Link className="navbar__menu--link" to={`/${to}`}>
       {to[0].toUpperCase() + to.slice(1).toLowerCase()}
@@ -16,21 +15,26 @@ export default function Navbar() {
   const handleMenuClick = () => setMenuOpened(prevValue => !prevValue)
 
   return (
-    <nav className={"navbar " + (menuOpened && "navbar--opened")}>
+    <nav id="navbar" className={"navbar " + (menuOpened && "navbar--opened")}>
       <div className="slideUp navbar__top">
         <Link to="/">
           <i className="navbar__top--icon fas fa-home"></i>
         </Link>
-        <span onClick={handleMenuClick}>
-          <i className={"navbar__top--icon fas " + (menuOpened ? "fa-times" : "fa-bars")}></i>
-        </span>
+        <i
+          tabIndex={0}
+          aria-label="Open navigation menu"
+          role="button"
+          className={
+            "navbar__top--icon fas " + (menuOpened ? "fa-times" : "fa-bars")
+          }
+          onKeyDown={handleMenuClick}
+          onClick={handleMenuClick}
+        ></i>
       </div>
       {menuOpened && (
         <div id="navbarMenu" className="navbar__menu">
           <MenuLink to="albums" />
-          <MenuLink to="map" />
           <MenuLink to="about" />
-          <MenuLink to="contact" />
           <MenuLink to="cart" />
           <div className="navbar__menu--item">
             <a className="navbar__menu--link" href="https://www.instagram.com">

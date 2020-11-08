@@ -1,6 +1,12 @@
 .text-header {
+  background-image: linear-gradient(
+    to bottom,
+    $primary-background,
+    $secondary-background
+  );
+  line-height: 1.5;
   font-size: 2rem;
-  padding: 7rem 1rem 3rem 1rem;
+  padding: 7rem 2rem 3rem 2rem;
   margin: 0 auto;
   color: $color-white;
 }

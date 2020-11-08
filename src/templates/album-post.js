@@ -1,11 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import PhotoCard from "../components/PhotoCard"
+import PhotoRoll from "../components/PhotoRoll"
 
 export default function AlbumPost({ data }) {
   const {
-    id,
     title,
     date,
     caption: { caption },
@@ -16,28 +15,25 @@ export default function AlbumPost({ data }) {
     <Layout>
       <div className="Card">
         <div className="text-header">
-          <h1>{title}</h1>
-          <h3>
+          <h1 class="album-info__title">{title}</h1>
+          <h3 class="album-info__date">
             {new Date(date).toLocaleDateString(undefined, {
               year: "numeric",
               month: "long",
               day: "numeric",
             })}
           </h3>
-          <h5>{caption}</h5>
+          <p class="album-info__caption">{caption}</p>
         </div>
       </div>
-      {photos.map(photo => {
-        return <PhotoCard key={photo.id} node={photo} />
-      })}
+      <PhotoRoll nodes={photos} />
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
-  query AlbumPostByID($id: String!) {
-    contentfulAlbum(id: { eq: $id }) {
-      id
+  query AlbumPostByID($contentful_id: String!) {
+    contentfulAlbum(contentful_id: { eq: $contentful_id }) {
       title
       date
       caption {
@@ -48,8 +44,14 @@ export const pageQuery = graphql`
         title
         description
         createdAt(formatString: "MMMM D, YYYY")
-        fluid(maxWidth: 1400) {
+        fluid(quality: 100, maxWidth: 2400) {
           ...GatsbyContentfulFluid
+        }
+        fields {
+          album_tags {
+            id
+            title
+          }
         }
       }
     }

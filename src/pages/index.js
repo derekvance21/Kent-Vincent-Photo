@@ -1,19 +1,18 @@
 import React from "react"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
-import PhotoCard from "../components/PhotoCard"
+import PhotoRoll from "../components/PhotoRoll"
 
 export default function Home({ data }) {
-  const heroNode = data.contentfulHomePage.image
+  const heroNodeId = data.contentfulHomePage.image.id
   const edges = data.allContentfulAsset.edges
+  const nodes = edges.filter(({node}) => node.id === heroNodeId).concat(
+    edges.filter(({ node }) => node.id !== heroNodeId)).map(({ node }) => node)
+
+
   return (
     <Layout>
-      <PhotoCard node={heroNode} />
-      {edges.map(({ node }) => {
-        return (
-          node.id !== heroNode.id && <PhotoCard key={node.id} node={node} />
-        )
-      })}
+      <PhotoRoll nodes={nodes} />
     </Layout>
   )
 }
@@ -27,8 +26,14 @@ export const pageQuery = graphql`
           description
           title
           createdAt(formatString: "MMMM D, YYYY")
-          fluid(maxWidth: 1400) {
+          fluid(quality: 100, maxWidth: 2400) {
             ...GatsbyContentfulFluid
+          }
+          fields {
+            album_tags {
+              title
+              id
+            }
           }
         }
       }
@@ -36,12 +41,6 @@ export const pageQuery = graphql`
     contentfulHomePage {
       image {
         id
-        description
-        title
-        createdAt(formatString: "MMMM D, YYYY")
-        fluid(maxWidth: 1400) {
-          ...GatsbyContentfulFluid
-        }
       }
     }
   }

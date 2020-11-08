@@ -1,17 +1,25 @@
 @import "abstract/variables";
+
 @import "base/animations";
 @import "base/base";
 @import "base/typography";
+
 @import "components/button";
 @import "components/card";
 @import "components/icon";
 @import "components/overlay";
 @import "components/photoCard";
+@import "components/photoInfo";
+@import "components/photoViewer";
+
 @import "layout/content";
 @import "layout/footer";
 @import "layout/navbar";
 @import "layout/textHeader";
+
+@import "pages/about";
 @import "pages/albums";
+@import "pages/albumPost";
 
 
 

@@ -1,18 +1,25 @@
 .album-thumbnail__teaser {
-  color: white;
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   position: absolute;
-  bottom: 0;
+  top: 50%;
   width: 100%;
+  text-align: center;
+  transform: translateY(-50%);
+  color: $color-white;
+  text-shadow: 0 3px 3px $color-black;
+  transition: all 0.2s ease;
+  border-radius: 10%;
+
+  &:hover {
+    transform: translateY(-51%);
+    text-shadow: 0 4px 4px $color-black;
+  }
   &--heading {
-    display: inline-block;
-    font-size: 4rem;
-    text-shadow: 0.1rem 0.2rem 0.5rem $color-black;
-    &:not(:last-child) {
-      margin-right: 0.8rem;
-    }
-    &:not(:first-child) {
-      font-size: 3rem;
-    }
+    font-size: 7rem;
+    font-weight: 600;
+  }
+  &--subheading {
+    font-size: 3rem;
+    font-weight: 500;
   }
 }
