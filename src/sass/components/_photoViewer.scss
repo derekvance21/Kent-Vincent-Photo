@@ -47,17 +47,17 @@
 
     &--show {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      margin: 2rem;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 1rem;
     }
     &--hide {
     }
     &--close {
       position: absolute;
-      top: 0;
-      right: 0;
-      margin: 2rem;
+      top: 2rem;
+      right: 2rem;
+      padding: 1rem;
     }
   }
 }

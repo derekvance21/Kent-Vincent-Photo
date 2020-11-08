@@ -35,12 +35,12 @@ export default function Navbar() {
         <div id="navbarMenu" className="navbar__menu">
           <MenuLink to="albums" />
           <MenuLink to="about" />
-          <MenuLink to="cart" />
-          <div className="navbar__menu--item">
+          {/* <MenuLink to="cart" /> */}
+          {/* <div className="navbar__menu--item">
             <a className="navbar__menu--link" href="https://www.instagram.com">
               <i className="fab fa-instagram"></i>
             </a>
-          </div>
+          </div> */}
         </div>
       )}
     </nav>

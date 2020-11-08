@@ -26,9 +26,9 @@ export default function Footer() {
         <div className="footer-section__items">
           <a
             className="footer__text footer__text--link"
-            href="mailto:kent-vincent@gmail.com"
+            href="mailto:EMAIL@EMAIL.com"
           >
-            kent-vincent@gmail.com
+            EMAIL@EMAIL.com
           </a>
         </div>
       </div>

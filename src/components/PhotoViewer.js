@@ -107,6 +107,7 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
           background-size: contain;
           height: 100vh;
         `}
+        // loading="eager"
       ></BackgroundImage>
       {expandToggled ? (
         <PhotoInfo
