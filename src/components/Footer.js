@@ -16,9 +16,6 @@ export default function Footer() {
           <Link className="footer__text footer__text--link" to="/about">
             About
           </Link>
-          <Link className="footer__text footer__text--link" to="/cart">
-            Cart
-          </Link>
         </div>
       </div>
       <div className="row footer-section">
