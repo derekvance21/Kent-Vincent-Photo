@@ -7,10 +7,6 @@
   text-align: left;
   padding: 4rem 0 1rem 0;
 
-  @include respond(tab-port) {
-    padding: 8rem 0;
-  }
-
   &-section {
     padding: 1rem 2rem;
     display: inline-block;
