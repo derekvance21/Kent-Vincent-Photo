@@ -50,19 +50,23 @@ const PhotoInfo = ({
 
 export default function PhotoViewer({ nodes, initialId, onClose }) {
   const initialIndex = nodes.findIndex(node => node.id === initialId)
-  const [currentIndex, setCurrentIndex] = useState(initialIndex)
+  const [currentPhoto, setCurrentPhoto] = useState({
+    node: nodes[initialIndex],
+    index: initialIndex,
+  })
   const [expandToggled, setExpandToggled] = useState(false)
 
-  // useEffect(() => {
-  //   document.location =
-  //     document.location.pathname + `#${nodes[currentIndex].id}`
-  //   document.querySelector(".photo-viewer").focus()
-  // })
+  useEffect(() => {
+    document.location = document.location.pathname + `#${currentPhoto.node.id}`
+    document.querySelector(".photo-viewer").focus()
+  })
 
   const scroll = delta => {
-    setCurrentIndex(prevValue => {
-      const newIndex = prevValue + delta
-      return newIndex >= 0 && newIndex < nodes.length ? newIndex : prevValue
+    setCurrentPhoto(prevValue => {
+      const newIndex = prevValue.index + delta
+      return newIndex >= 0 && newIndex < nodes.length
+        ? { node: nodes[newIndex], index: newIndex }
+        : prevValue
     })
   }
 
@@ -79,7 +83,7 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
     <div onKeyDown={scrollKey} tabIndex={0} className="photo-viewer">
       <div className="photo-viewer__top">
         <span className="photo-viewer__icon photo-viewer__icon--count">
-          {`${currentIndex + 1} / ${nodes.length}`}
+          {`${currentPhoto.index + 1} / ${nodes.length}`}
         </span>
         <i
           aria-label="Show photo information"
@@ -98,7 +102,7 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
           className="photo-viewer__icon photo-viewer__icon--close icon fas fa-times"
         ></i>
       </div>
-      {currentIndex !== 0 && (
+      {currentPhoto.index !== 0 && (
         <i
           aria-label="Scroll left"
           role="button"
@@ -108,7 +112,7 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
           onClick={() => scroll(-1)}
         ></i>
       )}
-      {currentIndex !== nodes.length - 1 && (
+      {currentPhoto.index !== nodes.length - 1 && (
         <i
           aria-label="Scroll right"
           role="button"
@@ -119,22 +123,20 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
         ></i>
       )}
       <BackgroundImage
-        className="photo-viewer__photo"
         Tag="div"
-        fluid={nodes[currentIndex].fluid}
+        fluid={currentPhoto.node.fluid}
         onClick={onClose}
         css={css`
           background-size: contain;
           height: 100vh;
         `}
-        // loading="eager"
       ></BackgroundImage>
       {expandToggled && (
         <PhotoInfo
-          albumTags={nodes[currentIndex].fields.album_tags}
-          description={nodes[currentIndex].description}
-          title={nodes[currentIndex].title}
-          createdAt={nodes[currentIndex].createdAt}
+          albumTags={currentPhoto.node.fields.album_tags}
+          description={currentPhoto.node.description}
+          title={currentPhoto.node.title}
+          createdAt={currentPhoto.node.createdAt}
           onMinimize={() => setExpandToggled(false)}
         />
       )}

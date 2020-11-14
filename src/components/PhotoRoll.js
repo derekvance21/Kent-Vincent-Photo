@@ -30,6 +30,7 @@ export default function PhotoRoll({ photos }) {
       onKeyDown={handleKeyDown}
       tabIndex={0}
       className="photo-roll"
+      id="photo-roll"
     >
       {photos.map(photo => {
         return (

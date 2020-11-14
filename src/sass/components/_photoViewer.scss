@@ -2,6 +2,7 @@
   height: 100vh;
   width: 100%;
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   background-color: rgba(#111, 0.96);
@@ -49,6 +50,9 @@
   &__icon {
     color: $color-white;
     font-size: 2.4rem;
+    @include respond(tab-port) {
+      font-size: 3rem;
+    }
     z-index: 3;
     padding: 2rem;
     display: inline-block;

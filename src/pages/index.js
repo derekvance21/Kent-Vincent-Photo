@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Layout from "../components/Layout"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import PhotoRoll from "../components/PhotoRoll"
 import orderNodes from "../utils/ordering"
 import BackgroundImage from "gatsby-background-image"
@@ -41,9 +41,29 @@ export default function Home({ data }) {
             <h1 className="home-page-heading__title">Kent Vincent</h1>
             <h2 className="home-page-heading__subtitle">photography</h2>
           </div>
+          <Link to="/#photo-roll">
+            <i className="scroll-prompt fas fa-chevron-down"></i>
+          </Link>
         </BackgroundImage>
       </div>
       <PhotoRoll photos={orderedPhotos} />
+      <Link to="/albums">
+        <BackgroundImage
+          Tag="section"
+          className="link-to-albums"
+          fluid={heroImages[0].fluid}
+          backgroundColor={`#040e18`}
+          style={{
+            margin: "1rem 2rem",
+            height: "30vh",
+            backgroundPosition: "top",
+          }}
+        >
+          <div className="albums-link">
+            Browse Albums <span className="albums-link--rarr">&rarr;</span>
+          </div>
+        </BackgroundImage>
+      </Link>
     </Layout>
   )
 }
