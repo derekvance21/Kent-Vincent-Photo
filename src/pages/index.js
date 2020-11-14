@@ -53,11 +53,6 @@ export default function Home({ data }) {
           className="link-to-albums"
           fluid={heroImages[0].fluid}
           backgroundColor={`#040e18`}
-          style={{
-            margin: "1rem 2rem",
-            height: "30vh",
-            backgroundPosition: "top",
-          }}
         >
           <div className="albums-link">
             Browse Albums <span className="albums-link--rarr">&rarr;</span>

@@ -48,6 +48,12 @@
   z-index: 1;
 }
 
+.link-to-albums {
+  margin: 1rem 0;
+  height: 20vh;
+  background-position: top;
+}
+
 .albums-link {
   @include absoluteCenter;
   text-decoration: none;
@@ -56,14 +62,14 @@
   font-weight: 500;
   text-shadow: 0 5px 5px $color-black;
   transition: all 0.2s;
-  border-bottom: 3px solid transparent;
+  width: 100%;
+  text-align: center;
   &--rarr {
     display: inline-block;
     animation: moveLeftRight 1s linear infinite;
   }
   &:hover {
-    border-bottom: 3px solid $color-white;
-    text-shadow: 0 5px 5px $color-black;
-    transform: translate(-50%, -53%);
+    text-shadow: 0 7px 7px $color-black;
+    transform: translate(-50%, -55%);
   }
 }
