@@ -1,7 +1,7 @@
 .page-hero-image {
-  height: 40vh;
+  height: 30vh;
   @include respond(phone) {
-    height: 30vh;
+    height: 20vh;
   }
   background-position: top;
 }
@@ -14,7 +14,7 @@
   color: rgba($color-white, 0.75);
   font-size: 8rem;
   font-weight: 400;
-  text-shadow: 0 5px 1rem $color-black;
+  text-shadow: 0 5px 5px $color-black;
 }
 
 .text-header {

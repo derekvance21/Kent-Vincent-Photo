@@ -41,7 +41,6 @@ export default function Albums({ data }) {
         className="page-hero-image"
         fluid={heroImage.fluid}
         backgroundColor={`#040e18`}
-        style={{ backgroundPosition: "top" }}
       >
         <h1 className="page-heading">Albums</h1>
       </BackgroundImage>
