@@ -3,9 +3,8 @@
 // Colors
 $primary-background: #111111;
 $secondary-background: #181818;
-$text-overlay-background: rgba(0, 0, 0, 0.9);
+$text-overlay-background: rgba(0, 0, 0, 0.75);
 $text-overlay-background-hover: rgba(0, 0, 0, 0.4);
-$text-color-solid: #ccc;
 $color-white: #eee;
 $color-light-gray: #ccc;
 $color-black: #111;
@@ -18,3 +17,6 @@ $paragraph-font-weight: 500;
 
 // Icons
 $icon-hover-background: #555;
+
+// Card
+$card-spacing: 1rem;

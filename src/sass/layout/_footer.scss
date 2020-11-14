@@ -7,6 +7,10 @@
   text-align: left;
   padding: 1rem 0;
 
+  @include respond(tab-port) {
+    padding: 8rem 0;
+  }
+
   &-section {
     padding: 1rem 2rem;
     display: inline-block;
@@ -37,15 +41,14 @@
 
       &:hover {
         text-shadow: 0 0.5rem 0.5rem $color-black;
-        transform: translateY(-2px);
         border-bottom: 1px solid $color-white;
+        background-color: rgba(#fff, 0.3);
       }
     }
   }
 
   &__bottom {
-    text-align: right;
-    margin: 0 2rem;
-    padding-bottom: 1rem;
+    text-align: center;
+    margin: 4rem 2rem 1rem 2rem;
   }
 }

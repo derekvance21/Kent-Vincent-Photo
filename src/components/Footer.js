@@ -30,7 +30,9 @@ export default function Footer() {
         </div>
       </div>
       <div className="row footer__bottom">
-        <h4 className="footer__text">&copy; 2020</h4>
+        <p className="footer__text">
+          &copy; 2020 Derek Vance. All rights reserved
+        </p>
       </div>
     </div>
   )

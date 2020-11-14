@@ -2,26 +2,27 @@
   background-color: $text-overlay-background;
   color: $color-white;
   padding: 1.2rem 2rem 2rem 2rem;
-  z-index: 300;
+  z-index: 2;
   position: absolute;
   bottom: 0;
-  box-sizing: border-box;
   width: 100%;
   animation: slideUp 2s ease-out;
 
   &__details {
     margin: 0.5rem 0;
     font-size: 1.5rem;
-    color: $text-color-solid;
+    color: $color-light-gray;
   }
 
   &__head {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-bottom: 0.5rem;
     &--title {
       text-shadow: 0.1rem 0.2rem 1rem $color-black;
       font-size: 3rem;
+      line-height: 1;
     }
   }
 

@@ -6,17 +6,17 @@
   left: 0;
   background-color: rgba(#111, 0.96);
 
-  &__close {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
+  // &__close {
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: 0;
+  // }
 
   &__scroll {
     color: $color-white;
     position: absolute;
     cursor: pointer;
-    z-index: 200;
+    z-index: 2;
     font-size: 4rem;
     text-shadow: 0 0.5rem 0.8rem rgba($color-black, 0.8);
     padding: 50vh 2rem;
@@ -39,24 +39,26 @@
       transform: translateY(2px);
     }
   }
+  &__top {
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
   &__icon {
     color: $color-white;
-    font-size: 3rem;
-    z-index: 100000;
-
-    &--show {
-      position: absolute;
-      bottom: 2rem;
-      right: 2rem;
-      padding: 1rem;
+    font-size: 2.4rem;
+    z-index: 3;
+    padding: 2rem;
+    display: inline-block;
+    line-height: 1;
+    &--count {
+      margin-right: auto;
+    }
+    &--info {
     }
     &--hide {
-    }
-    &--close {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
       padding: 1rem;
     }
   }

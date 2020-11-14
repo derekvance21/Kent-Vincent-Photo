@@ -1,3 +1,10 @@
 .content {
   margin: 0 auto;
 }
+
+.photo-roll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: $card-spacing;
+}

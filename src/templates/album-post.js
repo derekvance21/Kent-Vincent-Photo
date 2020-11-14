@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import orderNodes from "../utils/ordering"
 import PhotoRoll from "../components/PhotoRoll"
 
 export default function AlbumPost({ data }) {
@@ -10,6 +11,7 @@ export default function AlbumPost({ data }) {
     caption: { caption },
     photos,
   } = data.contentfulAlbum
+  const orderedPhotos = orderNodes(photos)
 
   return (
     <Layout>
@@ -26,7 +28,7 @@ export default function AlbumPost({ data }) {
           <p class="album-info__caption">{caption}</p>
         </div>
       </div>
-      <PhotoRoll nodes={photos} />
+      <PhotoRoll photos={orderedPhotos} />
     </Layout>
   )
 }

@@ -11,9 +11,7 @@ const PhotoInfo = ({
   albumTags,
 }) => {
   return (
-    <div
-      className="info"
-    >
+    <div className="info">
       <div className="info__head">
         <h2 className="info__head--title">{title}</h2>
         <i
@@ -28,11 +26,19 @@ const PhotoInfo = ({
       <div className="info__album-tags">
         {albumTags.map(tag => (
           <Link className="info__album-tags--link" to={`/albums/${tag.id}`}>
-            {tag.title}
+            Go to{" "}
+            <span
+              css={css`
+                font-weight: 500;
+              `}
+            >
+              {tag.title}
+            </span>{" "}
+            Album
           </Link>
         ))}
       </div>
-      <h3 className="info__details">{createdAt}</h3>
+      <h3 className="info__details">Uploaded {createdAt}</h3>
       <span className="info__details">{description}</span>
       {/* <button className="btn">
         <i className="btn--icon fas fa-shopping-cart"></i>
@@ -47,11 +53,11 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
   const [expandToggled, setExpandToggled] = useState(false)
 
-  useEffect(() => {
-    document.location =
-      document.location.pathname + `#${nodes[currentIndex].id}`
-    document.querySelector(".photo-viewer").focus()
-  })
+  // useEffect(() => {
+  //   document.location =
+  //     document.location.pathname + `#${nodes[currentIndex].id}`
+  //   document.querySelector(".photo-viewer").focus()
+  // })
 
   const scroll = delta => {
     setCurrentIndex(prevValue => {
@@ -71,13 +77,27 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
 
   return (
     <div onKeyDown={scrollKey} tabIndex={0} className="photo-viewer">
-      <i
-        aria-label="Close full-screen photo viewer"
-        role="button"
-        onKeyDown={onClose}
-        tabIndex={-1}
-        onClick={onClose} className="photo-viewer__icon photo-viewer__icon--close icon fas fa-times"
-      ></i>
+      <div className="photo-viewer__top">
+        <span className="photo-viewer__icon photo-viewer__icon--count">
+          {`${currentIndex + 1} / ${nodes.length}`}
+        </span>
+        <i
+          aria-label="Show photo information"
+          role="button"
+          tabIndex={-1}
+          className="photo-viewer__icon photo-viewer__icon--info icon fas fa-info-circle"
+          onClick={() => setExpandToggled(prevValue => !prevValue)}
+          onKeyDown={() => setExpandToggled(prevValue => !prevValue)}
+        ></i>
+        <i
+          aria-label="Close full-screen photo viewer"
+          role="button"
+          onKeyDown={onClose}
+          tabIndex={-1}
+          onClick={onClose}
+          className="photo-viewer__icon photo-viewer__icon--close icon fas fa-times"
+        ></i>
+      </div>
       {currentIndex !== 0 && (
         <i
           aria-label="Scroll left"
@@ -109,7 +129,7 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
         `}
         // loading="eager"
       ></BackgroundImage>
-      {expandToggled ? (
+      {expandToggled && (
         <PhotoInfo
           albumTags={nodes[currentIndex].fields.album_tags}
           description={nodes[currentIndex].description}
@@ -117,15 +137,6 @@ export default function PhotoViewer({ nodes, initialId, onClose }) {
           createdAt={nodes[currentIndex].createdAt}
           onMinimize={() => setExpandToggled(false)}
         />
-      ) : (
-        <i
-          aria-label="Show photo information"
-          role="button"
-          tabIndex={-1}
-          className="photo-viewer__icon photo-viewer__icon--show icon fas fa-ellipsis-h"
-          onClick={() => setExpandToggled(true)}
-          onKeyDown={() => setExpandToggled(true)}
-        ></i>
       )}
     </div>
   )

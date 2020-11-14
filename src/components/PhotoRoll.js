@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import PhotoCard from "./PhotoCard"
 import PhotoViewer from "./PhotoViewer"
 
-export default function PhotoRoll({ nodes }) {
+export default function PhotoRoll({ photos }) {
   const [photoViewerMode, setPhotoViewerMode] = useState(false)
   const [initialId, setInitialId] = useState(null)
 
@@ -25,22 +25,39 @@ export default function PhotoRoll({ nodes }) {
   }
 
   return (
-    <div role="button" onKeyDown={handleKeyDown} tabIndex={0} className="content">
-      {nodes.map(node => (
-        <PhotoCard
-          id={node.id}
-          key={node.id}
-          node={node}
-          onToggle={turnOnPhotoViewerMode}
-        />
-      ))}
+    <div
+      role="button"
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      className="photo-roll"
+    >
+      {photos.map(photo => {
+        return (
+          <PhotoCard
+            id={photo.node.id}
+            key={photo.node.id}
+            node={photo.node}
+            width={photo.width}
+            onToggle={turnOnPhotoViewerMode}
+          />
+        )
+      })}
       {photoViewerMode && (
         <PhotoViewer
           onClose={turnOffPhotoViewerMode}
-          nodes={nodes}
+          nodes={photos.map(photo => photo.node)}
           initialId={initialId}
         />
       )}
     </div>
   )
 }
+
+// {nodes.map(node => (
+//   <PhotoCard
+// id={node.id}
+// key={node.id}
+// node={node}
+// onToggle={turnOnPhotoViewerMode}
+//   />
+// ))}

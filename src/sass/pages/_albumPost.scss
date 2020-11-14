@@ -1,18 +1,19 @@
 .album-info {
   &__title {
+    color: $color-white;
     font-size: 6rem;
     font-weight: $header-font-weight;
   }
   &__date {
+    color: $color-light-gray;
     font-size: 2rem;
     font-weight: 300;
-    color: $color-light-gray;
     margin-bottom: 2rem;
   }
   &__caption {
-    font-size: 1.6rem;
-    font-weight: 500; 
-    text-indent: 2rem;
     color: $color-light-gray;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-indent: 2rem;
   }
 }

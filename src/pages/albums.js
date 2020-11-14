@@ -15,7 +15,7 @@ const AlbumTeaser = ({ title, date }) => {
 
 const AlbumItem = ({ id, title, date, fluid, caption }) => {
   return (
-    <Link className="Card" to={`/albums/${id}`}>
+    <Link className="album-item" to={`/albums/${id}`}>
       <BackgroundImage
         fluid={fluid}
         backgroundColor={`#040e18`}
@@ -31,37 +31,56 @@ const AlbumItem = ({ id, title, date, fluid, caption }) => {
 }
 
 export default function Albums({ data }) {
+  const heroImage = data.contentfulAlbumsPage.heroImage
   const edges = data.allContentfulAlbum.edges
 
   return (
     <Layout>
-      {edges.map(edge => {
-        const {
-          node: {
-            contentful_id,
-            title,
-            date,
-            thumbnail: { fluid },
-            caption: { caption },
-          },
-        } = edge
-        return (
-          <AlbumItem
-            key={contentful_id}
-            id={contentful_id}
-            title={title}
-            date={date}
-            fluid={fluid}
-            caption={caption}
-          />
-        )
-      })}
+      <BackgroundImage
+        Tag="section"
+        className="page-hero-image"
+        fluid={heroImage.fluid}
+        backgroundColor={`#040e18`}
+        style={{ backgroundPosition: "top" }}
+      >
+        <h1 className="page-heading">Albums</h1>
+      </BackgroundImage>
+      <div className="album-roll">
+        {edges.map(edge => {
+          const {
+            node: {
+              contentful_id,
+              title,
+              date,
+              thumbnail: { fluid },
+              caption: { caption },
+            },
+          } = edge
+          return (
+            <AlbumItem
+              key={contentful_id}
+              id={contentful_id}
+              title={title}
+              date={date}
+              fluid={fluid}
+              caption={caption}
+            />
+          )
+        })}
+      </div>
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
   query AlbumsQuery {
+    contentfulAlbumsPage {
+      heroImage {
+        fluid(maxWidth: 2400) {
+          ...GatsbyContentfulFluid
+        }
+      }
+    }
     allContentfulAlbum {
       edges {
         node {

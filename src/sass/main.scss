@@ -1,4 +1,5 @@
 @import "abstract/variables";
+@import "abstract/mixins";
 
 @import "base/animations";
 @import "base/base";
@@ -20,7 +21,4 @@
 @import "pages/about";
 @import "pages/albums";
 @import "pages/albumPost";
-
-
-
-
+@import "pages/homePage";
