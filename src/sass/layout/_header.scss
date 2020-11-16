@@ -1,7 +1,7 @@
 .page-hero-image {
   height: 30vh;
   @include respond(phone) {
-    height: 20vh;
+    height: 25vh;
   }
   background-position: top;
 }
@@ -27,4 +27,7 @@
   font-size: 2rem;
   padding: 4rem 2rem;
   margin: 0 auto;
+  @include respond(phone) {
+    padding: 6rem 2rem;
+  }
 }

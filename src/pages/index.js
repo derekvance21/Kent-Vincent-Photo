@@ -8,7 +8,7 @@ import { css } from "@emotion/core"
 
 export default function Home({ data }) {
   const featuredImages = data.contentfulHomePage.featuredImages
-  const heroImages = data.contentfulHomePage.heroImages
+  const heroImage = data.contentfulHomePage.image
   const orderedPhotos = orderNodes(featuredImages)
 
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0)
@@ -34,7 +34,7 @@ export default function Home({ data }) {
         <BackgroundImage
           Tag="section"
           className="hero-image"
-          fluid={heroImages[currentHeroIndex].fluid}
+          fluid={heroImage.fluid}
           backgroundColor={`#040e18`}
         >
           <div className="home-page-heading">
@@ -51,7 +51,7 @@ export default function Home({ data }) {
         <BackgroundImage
           Tag="section"
           className="link-to-albums"
-          fluid={heroImages[0].fluid}
+          fluid={heroImage.fluid}
           backgroundColor={`#040e18`}
         >
           <div className="albums-link">
@@ -66,7 +66,7 @@ export default function Home({ data }) {
 export const pageQuery = graphql`
   query HomePageQuery {
     contentfulHomePage {
-      heroImages {
+      image {
         id
         fluid(quality: 100, maxWidth: 2400) {
           ...GatsbyContentfulFluid

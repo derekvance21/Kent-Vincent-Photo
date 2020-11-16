@@ -15,18 +15,16 @@ export default function AlbumPost({ data }) {
 
   return (
     <Layout>
-      <div className="Card">
-        <div className="text-header">
-          <h1 class="album-info__title">{title}</h1>
-          <h3 class="album-info__date">
-            {new Date(date).toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </h3>
-          <p class="album-info__caption">{caption}</p>
-        </div>
+      <div className="text-header">
+        <h1 class="album-info__title">{title}</h1>
+        <h3 class="album-info__date">
+          {new Date(date).toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </h3>
+        <p class="album-info__caption">{caption}</p>
       </div>
       <PhotoRoll photos={orderedPhotos} />
     </Layout>
