@@ -1,5 +1,7 @@
 require("dotenv").config()
 
+process.env.GATSBY_CONCURRENT_DOWNLOAD = 1;
+
 module.exports = {
   siteMetadata: {
     title: `Kent Vincent Photo`,
