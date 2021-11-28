@@ -18,7 +18,7 @@ export default function About({ data }) {
         <h1 className="page-heading">About</h1>
       </BackgroundImage>
       <div className="text-header about">
-        <div>{{aboutText}}</div>
+        <div>{aboutText}</div>
       </div>
     </Layout>
   )
