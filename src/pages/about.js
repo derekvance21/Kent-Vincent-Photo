@@ -5,10 +5,8 @@ import BackgroundImage from "gatsby-background-image"
 
 export default function About({ data }) {
   const heroImage = data.contentfulAboutPage.heroImage
+  const aboutText = data.contentfulAboutPage.aboutText.aboutText
 
-  const html = {
-    __html: data.contentfulAboutPage.aboutText.childContentfulRichText.html,
-  }
   return (
     <Layout>
       <BackgroundImage
@@ -20,7 +18,7 @@ export default function About({ data }) {
         <h1 className="page-heading">About</h1>
       </BackgroundImage>
       <div className="text-header about">
-        <div dangerouslySetInnerHTML={html}></div>
+        <div>{{aboutText}}</div>
       </div>
     </Layout>
   )
@@ -35,9 +33,7 @@ export const pageQuery = graphql`
         }
       }
       aboutText {
-        childContentfulRichText {
-          html
-        }
+        aboutText
       }
     }
   }

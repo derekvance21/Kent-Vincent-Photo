@@ -1,5 +1,3 @@
-import { forEach } from "lodash"
-
 export default function orderNodes(nodes) {
   let photoCards = []
 
@@ -7,7 +5,7 @@ export default function orderNodes(nodes) {
   wides = []
   portraits = []
   landscapes = []
-  forEach(nodes, node => {
+  nodes.forEach(node => {
     const {
       fluid: { aspectRatio },
     } = node
@@ -59,12 +57,12 @@ export default function orderNodes(nodes) {
     addToPhotoCards(landscapes, "1-of-2")
   }
   if (portraits.length > 0 || landscapes.length > 0 || wides.length > 0) {
-    console.log(
+    console.error(
       "Something has gone wrong! Not all the photos are in photoCards!"
     )
-    console.log(portraits.length)
-    console.log(landscapes.length)
-    console.log(wides.length)
+    console.error(portraits.length)
+    console.error(landscapes.length)
+    console.error(wides.length)
   }
   return photoCards
 }

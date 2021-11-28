@@ -21,6 +21,5 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `@contentful/gatsby-transformer-contentful-richtext`,
   ],
 }
